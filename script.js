@@ -17,77 +17,83 @@ function getHumanChoice() {
     return prompt("Make your next move!", "").toLowerCase();
 }
 
-function playRound(humanChoice, computerChoice) {
-    switch (humanChoice) {
-        case "rock":
-            switch (computerChoice) {
-                case "rock":
-                    console.log("It's a tie!");
-                    break;
-                case "paper":
-                    computerScore++;
-                    console.log("You lose! Paper beats Rock");
-                    break;
-                case "scissors":
-                    humanScore++;
-                    console.log("You win! Rock beats Scissors");
-                    break;
-                default:
-                    console.log("unexpected");
-                    break;
-            }
-            break;
-        case "paper":
-            switch (computerChoice) {
-                case "rock":
-                    humanScore++;
-                    console.log("You win! Paper beats Rock");
-                    break;
-                case "paper":
-                    console.log("It's a tie!");
-                    break;
-                case "scissors":
-                    computerScore++;
-                    console.log("You lose! Scissors beat Paper");
-                    break;
-                default:
-                    console.log("unexpected");
-                    break;
-            }
-            break;
-        case "scissors":
-            switch (computerChoice) {
-                case "rock":
-                    computerScore++;
-                    console.log("You lose! Rock beats Scissors");
-                    break;
-                case "paper":
-                    humanScore++
-                    console.log("You win! Scissors beat Paper");
-                    break;
-                case "scissors":
-                    console.log("It's a tie!");
-                    break;
-                default:
-                    console.log("unexpected");
-                    break;
-            }
-            break;
-        default:
-            console.log("Please make a valid move.");
-            break;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+    if (humanScore < computerScore) {
+        console.log("You lost the game... Final score: " + humanScore + "-" + computerScore);
+    } else if (humanScore > computerScore) {
+        console.log("You won the game! Final score: " + humanScore + "-" + computerScore);
+    } else {
+        console.log("It's a tie! Final score: " + humanScore + "-" + computerScore);
+    }
+    
+    function playRound(humanChoice, computerChoice) {
+        switch (humanChoice) {
+            case "rock":
+                switch (computerChoice) {
+                    case "rock":
+                        console.log("It's a tie!");
+                        break;
+                    case "paper":
+                        computerScore++;
+                        console.log("You lose! Paper beats Rock");
+                        break;
+                    case "scissors":
+                        humanScore++;
+                        console.log("You win! Rock beats Scissors");
+                        break;
+                    default:
+                        console.log("unexpected");
+                        break;
+                }
+                break;
+            case "paper":
+                switch (computerChoice) {
+                    case "rock":
+                        humanScore++;
+                        console.log("You win! Paper beats Rock");
+                        break;
+                    case "paper":
+                        console.log("It's a tie!");
+                        break;
+                    case "scissors":
+                        computerScore++;
+                        console.log("You lose! Scissors beat Paper");
+                        break;
+                    default:
+                        console.log("unexpected");
+                        break;
+                }
+                break;
+            case "scissors":
+                switch (computerChoice) {
+                    case "rock":
+                        computerScore++;
+                        console.log("You lose! Rock beats Scissors");
+                        break;
+                    case "paper":
+                        humanScore++
+                        console.log("You win! Scissors beat Paper");
+                        break;
+                    case "scissors":
+                        console.log("It's a tie!");
+                        break;
+                    default:
+                        console.log("unexpected");
+                        break;
+                }
+                break;
+            default:
+                console.log("Please make a valid move.");
+                break;
+        }
     }
 }
 
-
-let humanScore = 0;
-let computerScore = 0;
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-
-
-
+playGame();
