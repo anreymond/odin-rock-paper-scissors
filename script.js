@@ -14,7 +14,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    return prompt("Make your next move!", "rock, paper or scissors");
+    return prompt("Make your next move!", "").toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
