@@ -13,4 +13,13 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    return prompt("Make your next move!", "rock, paper or scissors");
+}
+
+console.log("Player: " + getHumanChoice());
+console.log("Computer: " + getComputerChoice());
+
+
+
+
